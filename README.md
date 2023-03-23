@@ -565,7 +565,7 @@ Clone the code from the [HMI repository](https://gitlab.tekniker.es/aut/projects
 ```bash
 cd /home/lsst/LSST/
 
-git clone [_https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers.git_](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers.git)
+git clone https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers.git
 
 cd HMIComputers
 
