@@ -783,6 +783,56 @@ sudo systemctl status vncserver@:1
 sudo systemctl enable vncserver@:1
 ```
 
+#### Remove old log files from the telemetry directory
+
+- Download the `main.py` script from [this repo](https://gitlab.tekniker.es/aut/projects/3151-LSST/python/file-history-deletion)
+- Make 4 copies, name and modify them as follows :
+  - *removeOldAlarmFiles.py*: in this copy replace the global variables as shown below:
+
+    ```python
+    files_directory = "/mnt/telemetry/AlarmHistory"
+    date_search_pattern = 'Alarm_File_(\d\d\d\d)_(\d\d)_(\d\d)'
+    months_to_keep = 12
+    ```
+
+  - *removeOldErrorFiles.py*: in this copy replace the global variables as shown below:
+
+    ```python
+    files_directory = "/mnt/telemetry/ErrorHistory"
+    date_search_pattern = 'SoftwareErrorFile_(\d\d\d\d)_(\d\d)_(\d\d)'
+    months_to_keep = 12
+    ```
+
+  - *removeOldMemoryLoggingFiles.py*: in this copy replace the global variables as shown below:
+
+    ```python
+    files_directory = "/mnt/telemetry/MemoryLogging"
+    date_search_pattern = 'MemoryLogging_(\d\d\d\d)_(\d\d)_(\d\d)'
+    months_to_keep = 2
+    ```
+
+  - *removeOldWindowNavigationFiles.py*: in this copy replace the global variables as shown below:
+
+    ```python
+    files_directory = "/mnt/telemetry/MemoryLogging"
+    date_search_pattern = 'WindowNavigationLogging_(\d\d\d\d)_(\d\d)_(\d\d)'
+    months_to_keep = 4
+    ```
+
+- Call this 4 scripts from crontab
+  - Edit crontab for the default user `crontab -e`
+  - Add the following lines:
+
+    ```bash
+    35 9 * * * python3 /mnt/telemetry/AlarmHistory/removeOldAlarmFiles.py
+    40 9 * * * python3 /mnt/telemetry/ErrorHistory/removeOldErrorFiles.py
+    45 9 * * * python3 /mnt/telemetry/MemoryLogging/removeOldMemoryLoggingFiles.py
+    50 9 * * * python3 /mnt/telemetry/MemoryLogging/removeOldWindowNavigationFiles.py
+    ```
+
+    > Note that in this case the 4 scripts are placed in different places, for this crontab task to work the scripts
+    > must be placed there or the path to them must be changed when editing the crontab task
+
 ### Connect to the VNC in the MCC
 
 - Connect to the Rubin VPN, if we are not in the local network already
@@ -1082,6 +1132,8 @@ Ensure that the PXI is configured as shown in Table 3 and has the software from 
 
 #### TMA Copy required files to the PXI
 
+In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
+
 ##### TMA Libraries
 
 Copy the following libraries to the `/usr/local/lib` folder inside the PXI.
@@ -1304,6 +1356,8 @@ Ensure that the PXI is configured as shown in Table 5 and has the software from 
 
 #### Axes Copy required files to the PXI
 
+In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
+
 ##### Axes Libraries
 
 Copy the following libraries to the `/usr/local/lib` folder inside the PXI.
@@ -1395,6 +1449,8 @@ Ensure that the PXI is configured as shown in Table 5 and has the software from 
 | **WebDAV Server** | 20.0.0.49152-0+f0 |
 
 #### AuxSystems Copy required files to the PXI
+
+In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
 
 ##### AuxSystems Libraries
 
