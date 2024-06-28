@@ -40,7 +40,7 @@ The computer operating system is Centos 7 (centos-release-7-3.1611.el7.centos.x8
 The EUI is based on LabVIEW 2020 64 bits for Linux.
 
 For deploying the EUI software the project called `LSST_HMIs.lvproj` is needed. It can be found in
-[**this**](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers) git repository.
+[**this**](https://github.com/lsst-ts/ts_tma_labview_hmi-computers) git repository.
 
 Steps to run the EUI code:
 
@@ -244,7 +244,7 @@ The following steps were taken from [this source.](https://linux4one.com/how-to-
 
 #### Install the MtMount Operation Manager
 
-Follow the steps defined at the doc of [this repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/OperationManager/lsst/-/blob/develop/tma_management/doc/tma_management_program.md).
+Follow the steps defined at the doc of [this repository](https://github.com/lsst-ts/ts_tma_operation-manager_mt-mount-operation-manager/blob/develop/tma_management/doc/tma_management_program.md).
 
 #### Install LabVIEW prerequisites
 
@@ -454,7 +454,7 @@ the Docker repository. Afterward, you can install and update Docker from the rep
 
 #### Install database
 
-Follow the steps below (source [Readme](https://gitlab.tekniker.es/aut/projects/3151-LSST/mariadb-docker)):
+Follow the steps below (source [Readme](https://github.com/lsst-ts/ts_tma_mariadb-docker)):
 
 - Set up the repository:
 
@@ -504,7 +504,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```bash
 cd /home/lsst/LSST
 
-git clone https://gitlab.tekniker.es/aut/projects/3151-LSST/mariadb-docker.git
+git clone git@github.com:lsst-ts/ts_tma_mariadb-docker.git
 ```
 
 - Update repository:
@@ -560,12 +560,12 @@ sudo crontab -e
 
 #### Clone the HMI repository
 
-Clone the code from the [HMI repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers).
+Clone the code from the [HMI repository](https://github.com/lsst-ts/ts_tma_labview_hmi-computers).
 
 ```bash
 cd /home/lsst/LSST/
 
-git clone https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers.git
+git clone git@github.com:lsst-ts/ts_tma_labview_hmi-computers.git
 
 cd HMIComputers
 
@@ -680,7 +680,7 @@ sudo cat var/log/messages
 
 #### Create shared folder
 
-Clone the shared folder [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/mccsharedfolder) and follow the steps at the readme file.
+Clone the shared folder [repository](https://github.com/lsst-ts/ts_tma_mcc-shared-folder) and follow the steps at the readme file.
 
 #### Open ports for HHD communication
 
@@ -785,7 +785,7 @@ sudo systemctl enable vncserver@:1
 
 #### Remove old log files from the telemetry directory
 
-- Download the `main.py` script from [this repo](https://gitlab.tekniker.es/aut/projects/3151-LSST/python/file-history-deletion)
+- Download the `main.py` script from [this repo](https://github.com/lsst-ts/ts_tma_python_filehistorydeletion)
 - Make 4 copies, name and modify them as follows :
   - *removeOldAlarmFiles.py*: in this copy replace the global variables as shown below:
 
@@ -1076,7 +1076,7 @@ The following modules are not included with the LabVIEW installer and must be do
 
 Steps for setting up the Handheld Device.
 
-- Download the [HMI repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/HMIComputers)
+- Download the [HMI repository](https://github.com/lsst-ts/ts_tma_labview_hmi-computers)
 - Open the HMI project.
 - Build the HHD application.
 
@@ -1132,7 +1132,8 @@ Ensure that the PXI is configured as shown in Table 3 and has the software from 
 
 #### TMA Copy required files to the PXI
 
-In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
+In addition to what is described in this section,
+[check here](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/tree/master/80%20DeployOnTargets)
 
 ##### TMA Libraries
 
@@ -1284,7 +1285,7 @@ cat /var/log/messages
 
 Steps for deploying the code to the TMA PXI:
 
-- Download the [PXI repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController)
+- Download the [PXI repository](https://github.com/lsst-ts/ts_tma_labview_pxi-controller)
 - Open the `LSST_MainControllerPXI.lvproj`.
   - Open the Main.
   - Solve the requested dependencies if they appear.
@@ -1294,16 +1295,16 @@ Steps for deploying the code to the TMA PXI:
   - Connect just 1 end of the etherCAT ring, recommended 4 slot B port cable connected and 3 slot B port disconnected.
   - To ensure that the ethercat line is displayed correctly the ESI files from the repo must be imported to labview.
     - Right click on the ethercat master -> Utilities -> Import Device Profiles…
-    - Here select the ESI files to import. Import all the files from the [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/master/ESIFiles)
+    - Here select the ESI files to import. Import all the files from the [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/master/ESIFiles)
     - Select only the import to the host computer option.
     - Click import.
     - Close the window.
   - Deploy the etherCAT master to the PXI.
   - Connect the etherCAT ring, if the recommended port was disconnected connect the 3 slot B port cable.
-  - Execute the EtherCAT_RingConfig.vi, from [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/develop/Host%20Code/Tools/EtherCAT)
+  - Execute the EtherCAT_RingConfig.vi, from [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/Host%20Code/Tools/EtherCAT)
     - Check if the redundancy is active, if active skip next 2 steps, usually is not.
   - Restart PXI.
-  - Execute the EtherCAT_RingConfig.vi, from [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/develop/Host%20Code/Tools/EtherCAT)
+  - Execute the EtherCAT_RingConfig.vi, from [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/Host%20Code/Tools/EtherCAT)
     - Check if the redundancy is active, at this step it must be active.
   - Check online master state to ensure that all devices are okay.
   - If all the devices are okay the ring is ready.
@@ -1356,7 +1357,7 @@ Ensure that the PXI is configured as shown in Table 5 and has the software from 
 
 #### Axes Copy required files to the PXI
 
-In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
+In addition to what is described in this section, [check here](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/tree/master/80%20DeployOnTargets)
 
 ##### Axes Libraries
 
@@ -1378,7 +1379,7 @@ The PTP is configured in the same way as done for the TMA-PXI, see [here](#tma-p
 
 Steps for deploying the code to the TMA PXI:
 
-- Download the PXI [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController)
+- Download the PXI [repository](https://github.com/lsst-ts/ts_tma_labview_pxi-controller)
 - Open the `MainAxesPXI.lvproj`.
   - Open the Main.
   - Solve the requested dependencies if they appear.
@@ -1388,16 +1389,16 @@ Steps for deploying the code to the TMA PXI:
   - Connect just 1 end of the etherCAT ring, recommended 4 slot B port cable connected and 3 slot B port disconnected.
   - To ensure that the ethercat line is displayed correctly the ESI files from the repo must be imported to labview.
     - Right click on the ethercat master -> Utilities -> Import Device Profiles…
-    - Here select the ESI files to import. Import all the files from the [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/master/ESIFiles)
+    - Here select the ESI files to import. Import all the files from the [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/master/ESIFiles)
     - Select only the import to the host computer option.
     - Click import.
     - Close the window.
   - Deploy the etherCAT master to the PXI.
   - Connect the etherCAT ring, if the recommended port was disconnected connect the 3 slot B port cable.
-  - Execute the `EtherCAT_RingConfig.vi`, from [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/develop/Host%20Code/Tools/EtherCAT)
+  - Execute the `EtherCAT_RingConfig.vi`, from [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/Host%20Code/Tools/EtherCAT)
     - Check if the redundancy is active, if active skip next 2 steps, usually is not.
   - Restart PXI.
-  - Execute the `EtherCAT_RingConfig.vi`, from [this folder](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController/tree/develop/Host%20Code/Tools/EtherCAT)
+  - Execute the `EtherCAT_RingConfig.vi`, from [this folder](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/Host%20Code/Tools/EtherCAT)
     - Check if the redundancy is active, at this step it must be active.
   - Check online master state to ensure that all devices are okay.
   - If all the devices are okay the ring is ready.
@@ -1415,7 +1416,7 @@ Steps for setting up the cRIO:
 
 ### Trajectory generation
 
-The trajectory generation is developed by Tekniker. The code is stored in [this repo](https://gitlab.tekniker.es/aut/projects/3151-LSST/trajectories/trayectorias).
+The trajectory generation is developed by Tekniker. The code is stored in [this repo](https://github.com/lsst-ts/trayectorias).
 
 ## AuxSystems PXI
 
@@ -1450,7 +1451,7 @@ Ensure that the PXI is configured as shown in Table 5 and has the software from 
 
 #### AuxSystems Copy required files to the PXI
 
-In addition to what is described in this section, [check here](https://gitlab.tekniker.es/publico/3151-lsst/documentation/pxicontroller_documentation/-/tree/master/80%20DeployOnTargets?ref_type=heads)
+In addition to what is described in this section, [check here](https://github.com/lsst-ts/ts_tma_tma-documentation_pxi-controller_documentation/tree/master/80%20DeployOnTargets)
 
 ##### AuxSystems Libraries
 
@@ -1468,7 +1469,7 @@ The PTP is configured in the same way as done for the TMA-PXI, see [here](#tma-p
 
 Steps for deploying the code to the TMA PXI:
 
-- Download the PXI [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController)
+- Download the PXI [repository](https://github.com/lsst-ts/ts_tma_labview_pxi-controller)
 - Open the `AuxSystemsController.lvproj`.
   - Open the Main.
   - Solve the requested dependencies if they appear.
@@ -1495,7 +1496,7 @@ First the Ethernet configuration in the MLC must be set. Follow next steps to pe
 
 Now, Indraworks Engineering tool is able to connect to MLC. Follows next steps for setting up the configuration in the MLC.
 
-- Download the Indraworks [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/harwareconfigurations/indraworks)
+- Download the Indraworks [repository](https://github.com/lsst-ts/ts_tma_hardware-configurations_indraworks)
 - Open the indraworks project
 - Connect to the MLC from the indraworks tool and deploy the project
 
@@ -1517,7 +1518,7 @@ Both are configured in the same way
     - Data+ to Pin
     - Data- to Pin
     - Common to Pin
-- Download the configuration files placed in the [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/harwareconfigurations/watlowconfiguration.git)
+- Download the configuration files placed in the [repository](https://github.com/lsst-ts/ts_tma_hardware-configurations_watlow-configuration)
 - Open the tool EZ-Zone Configurator 6.1 and click `Next` in the welcome window with the option `Download a configuration file in to a device`
 
 ![Watlow config 1](./Resources/Deployment_16.png)
@@ -1536,7 +1537,7 @@ Both are configured in the same way
 
 ## Phoenix Contact IOs
 
-- Download the configuration files placed in the [repository](https://gitlab.tekniker.es/aut/projects/3151-LSST/LabVIEWCode/PXIController.git) in the folder `\PXIController\ESIFiles\Phoenix\IOConfiguration`.
+- Download the configuration files placed in the [repository](https://github.com/lsst-ts/ts_tma_labview_pxi-controller) in the folder `\PXIController\ESIFiles\Phoenix\IOConfiguration`.
 - Connect to the desired header using a usb to micro usb cable. See images bellow to find the connection point in the IO header
 - Open startup+ from Phoenix Contact, v2.6.
 - When opening chose to load an existing project or click open project form file menu or task bar
