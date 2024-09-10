@@ -1009,6 +1009,25 @@ The following modules are not included with the LabVIEW installer and must be do
   > Note that as the file is big it is uploaded as a *Git LFS* this means that when pulling the file the
   > Git extension for versioning large files must be installed and configured for the repo.
 
+#### Fix Wireflow addon for the HHD
+
+There is a bug when building the wireflow user management library for the HHD OS. To solve it follow these steps:
+
+1. `WF User Access Toolkit (FUNDACION TEKNIKER)` must be installed using the VIPM configuration package from the previous step
+2. Locate the VI that needs to be updates:
+   - VI is: `C:\Program Files (x86)\National Instruments\LabVIEW 2020\vi.lib\addons\WireFlow\_AD0078-UAT (TEKNIKER)\runtime\EasyAccess\CheckUserGroups_wf_TEKNIKER.vi`
+   - Password: *rodastenrodasten*
+   - Once unlocked it should look like this:
+
+    ![CheckUserGroupsDefault](./Resources/CheckUserGroupsDefault.png)
+
+3. Modify the code inside the VI.
+   1. Remove the cluster constant below the unbundle by name that says *GroupInfo Lookup* and place a I32 constant
+   2. Create an indicator
+   3. Once the changes are done the block diagram should look like this:
+
+    ![CheckUserGroupsFixed](./Resources/CheckUserGroupsFixed.png)
+
 ## HHD
 
 Steps for setting up the Handheld Device.
