@@ -848,7 +848,8 @@ ssh -L 5901:localhost:5901 -N lsst@139.229.178.30
 
 ## Development PC
 
-This section refers to the computer used to deploy the code to the PXIs. This computer must be a Windows computer. It needs to have LV 2020 installed, as well as the following packages (version of packages not updated):
+This section refers to the computer used to deploy the code to the PXIs. This computer must be a Windows computer. It
+needs to have LV 2020 installed, as well as the following packages (version of packages not updated):
 
 | **INSTALLED SOFTWARE** | **VERSION** |
 | --- | --- |
@@ -1000,77 +1001,13 @@ The following modules are not included with the LabVIEW installer and must be do
   - Follow the installation guide
 - Execute VI Package Manager.
 - Verify that VI Package Manager can connect to LabVIEW. If not:
-  - Open LabVIEW 2020 and change the LabVIEW configuration, going to Tools/options/VI Server and active the TCP/IP port and ensure that the port corresponds with the port at the VI Package Manager.
+  - Open LabVIEW 2020 and change the LabVIEW configuration, going to Tools/options/VI Server and active the TCP/IP port
+    and ensure that the port corresponds with the port at the VI Package Manager.
     - On the VI Package Manager, got to Tools->Options->LabVIEW
-- Install the required dependencies using the VI Package Manager, dependencies to install: see Table 3. Note: Do not install colored elements in the table from the repositories, go to next step for instructions in the installation of those packages.
+- Install the packages contained in the VIPM configuration file located [**at this repo**](https://github.com/lsst-ts/ts_tma_vipm_dependency)
 
-![Add-ons required from VI package manager](./Resources/Deployment_12.png)
-
-| Name | Version | Repository | Company |
-| --- | --- | --- | --- |
-| Delacor QMH | 4.2.1.46 | NI LabVIEW Tools Network | Delacor |
-| Delacor QMH Event Scripter | 4.2.1.88 | NI LabVIEW Tools Network | Delacor |
-| Delacor QMH Palette | 4.2.0.3 | NI LabVIEW Tools Network | Delacor |
-| Delacor QMH Project Template | 4.2.1.64 | NI LabVIEW Tools Network | Delacor |
-| Delacor QMH Thermal Chamber Examples | 4.2.1.32 | NI LabVIEW Tools Network | Delacor |
-| GDataBase for MySQL(tm) | 2.0.2.57 | NI LabVIEW Tools Network | SAPHIR |
-| GPower All Toolsets | 2017.0.0.11 | NI LabVIEW Tools Network | GPower |
-| GPower Array | 2016.2.0.27 | NI LabVIEW Tools Network | GPower |
-| GPower Comparison | 2016.0.0.4 | NI LabVIEW Tools Network | GPower |
-| GPower Error & Warning | 2014.0.0.38 | NI LabVIEW Tools Network | GPower |
-| GPower Events | 2012.0.0.7 | NI LabVIEW Tools Network | GPower |
-| GPower Expression Parser | 2018.1.0.27 | NI LabVIEW Tools Network | GPower |
-| GPower Math | 2012.1.0.6 | NI LabVIEW Tools Network | GPower |
-| GPower Numeric | 2016.2.0.14 | NI LabVIEW Tools Network | GPower |
-| GPower Overflow | 2014.0.0.4 | NI LabVIEW Tools Network | GPower |
-| GPower String | 2016.1.0.11 | NI LabVIEW Tools Network | GPower |
-| GPower Timing | 2017.0.1.27 | NI LabVIEW Tools Network | GPower |
-| GPower VI Launcher | 2012.2.0.26 | NI LabVIEW Tools Network | GPower |
-| GPower VI Register | 2016.0.0.31 | NI LabVIEW Tools Network | GPower |
-| Hidden Gems in vi.lib | 1.0.0.10 | NI LabVIEW Tools Network | National Instruments |
-| jki_labs_tool_vi_tester | 3.0.2.294-1 | JKI Package Network | JKI |
-| jki_rsc_toolkits_palette | 1.1-1 | JKI Package Network | JKI Software |
-| MLPI for LabVIEW (mlpi4LabVIEW) | 1.29.1.0 | Unpublished | Bosch Rexroth AG |
-| NI Event Logger Library | 1.0.0.9 | NI LabVIEW Tools Network | National Instruments |
-| NI GOOP Development Suite | 1.1.87.94 | NI LabVIEW Tools Network | National Instruments |
-| NI GXML | 1.4.2.8 | NI LabVIEW Tools Network | National Instruments |
-| OpenG Application Control Library | 4.1.0.7 | JKI Package Network | OpenG.org |
-| OpenG Array Library | 4.1.1.14 | JKI Package Network | OpenG.org |
-| OpenG Boolean Library | 4.0.0.7 | JKI Package Network | OpenG.org |
-| OpenG Buttons Library | 4.0.0.7 | JKI Package Network | OpenG.org |
-| OpenG Comparison Library | 4.0.0.3 | JKI Package Network | OpenG.org |
-| OpenG Dictionary Library | 4.0.0.4 | JKI Package Network | OpenG.org |
-| OpenG Error Library | 4.2.0.23 | JKI Package Network | OpenG.org |
-| OpenG File Library | 4.0.1.22 | JKI Package Network | OpenG.org |
-| OpenG LabVIEW Data Library | 4.2.0.21 | JKI Package Network | LAVA |
-| OpenG LabVIEW ZIP Library | 4.0.0-2 | JKI Package Network | OpenG.org |
-| OpenG Large File Library | 4.0.0.3 | JKI Package Network | OpenG.org |
-| OpenG MD5 Digest Library | 4.1.1.10 | JKI Package Network | OpenG.org |
-| OpenG Message Queue Library | 4.0.0.15 | JKI Package Network | OpenG.org |
-| OpenG Numeric Library | 4.1.0.8 | JKI Package Network | OpenG.org |
-| OpenG Picture Library | 4.0.0.13 | JKI Package Network | OpenG.org |
-| OpenG Port IO | 4.0.0-2 | JKI Package Network | OpenG.org |
-| OpenG String Library | 4.1.0.12 | JKI Package Network | OpenG.org |
-| OpenG Time Library | 4.0.1.3 | JKI Package Network | National Instruments |
-| OpenG Variant Configuration File Library | 4.0.0.5 | JKI Package Network | OpenG.org |
-| SDI Plug-in - Bosch Rexroth IndraDrive | 1.0.3.4 | NI LabVIEW Tools Network | Bosch Rexroth AG |
-| ViBox - Probes | 1.6.0.39 | NI LabVIEW Tools Network | SAPHIR |
-| WF ProgressBar | 1.0.2.56 | NI LabVIEW Tools Network | WireFlow |
-| WF User Access Toolkit (FUNDACION TEKNIKER) | 1.1.0.70 | **Unpublished** | WireFlow |
-| WF Fingerprint Reader | 1.2.0.65 | NI LabVIEW Tools Network | WireFlow |
-| WF-SecuritySuite: Authentication | 2.1.0.92 | NI LabVIEW Tools Network | WireFlow |
-| WF-SecuritySuite: WF USB Security Dongle | 2.1.1.116 | NI LabVIEW Tools Network | WireFlow |
-
-- The WF User Access Toolkit (FUNDACION TEKNIKER) is not available at VI package manager by default, it must be installed from the files provided by Tekniker.
-  - Select File->Apply Package Configuration
-  - Browse to location with data provided by Tekniker and choose the `wireflow_lib_ad0078_user_access_toolkit-1.1.0.70.vip`
-  - Follow instructions
-  - The other colored packages will be installed as dependencies.
-- Copy the libraries created by Tekniker to the LabVIEW libraries at the LabVIEW installation destination.
-
-  - Go to the LabVIEW installation directory: `C:\Program Files (x86)\National Instruments\LabVIEW 2020`
-
-  - Copy folders to this location combining them
+  > Note that as the file is big it is uploaded as a *Git LFS* this means that when pulling the file the
+  > Git extension for versioning large files must be installed and configured for the repo.
 
 ## HHD
 
