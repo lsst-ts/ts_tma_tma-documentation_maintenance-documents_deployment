@@ -1015,9 +1015,9 @@ There is a bug when building the wireflow user management library for the HHD OS
 
 1. `WF User Access Toolkit (FUNDACION TEKNIKER)` must be installed using the VIPM configuration package from the previous step
 2. Locate the VI that needs to be updated:
-   - VI is: `C:\Program Files (x86)\National Instruments\LabVIEW 2020\vi.lib\addons\WireFlow\_AD0078-UAT (TEKNIKER)\runtime\EasyAccess\CheckUserGroups_wf_TEKNIKER.vi`
-   - Password: *rodastenrodasten*
-   - Once unlocked it should look like this:
+   1. VI is: `C:\Program Files (x86)\National Instruments\LabVIEW 2020\vi.lib\addons\WireFlow\_AD0078-UAT (TEKNIKER)\runtime\EasyAccess\CheckUserGroups_wf_TEKNIKER.vi`
+   2. Password: *rodastenrodasten*
+   3. Once unlocked it should look like this:
 
     ![CheckUserGroupsDefault](./Resources/CheckUserGroupsDefault.png)
 
