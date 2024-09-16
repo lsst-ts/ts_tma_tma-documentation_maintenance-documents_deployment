@@ -55,6 +55,7 @@
     "tigervnc",
     "toolkits",
     "Toolsets",
+    "unbundle",
     "usermod",
     "vncpasswd",
     "vncserver",
