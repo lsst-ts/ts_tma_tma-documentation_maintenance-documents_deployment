@@ -281,7 +281,7 @@ sudo sh ./INSTALL
 | labview-2015-rte-15.0.1-1.x86_64 |
 | labview-2015-rte-32bit-15.0.1-1.i386 |
 
-#### Install LabVIEW 2020 64 bit
+#### Install LabVIEW 2020 64 bit Professional
 
 For Linux there are multiple packages available when executing the installation script, install all the packages available.
 For doing so follow the installation script and say yes to all the packages.
