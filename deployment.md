@@ -85,7 +85,7 @@ For following the upcoming sections first get the following:
 - Centos 7 ISO image version: centos-release-7-3.1611.el7.centos.x86_64
 - LabVIEW 2015 32 bit installation files
 - LabVIEW 2020 32 & 64 bit installation files
-- Wireflow User Toolkit installation files
+- WireFlow User Toolkit installation files
 - LabVIEW libraries from Tekniker
 - [VI Package Manager](https://vipm.jki.net/download)
 
@@ -941,9 +941,9 @@ The following modules are not included with the LabVIEW installer and must be do
   > Note that as the file is big it is uploaded as a *Git LFS* this means that when pulling the file the
   > Git extension for versioning large files must be installed and configured for the repo.
 
-#### Fix Wireflow addon for the HHD
+#### Fix WireFlow addon for the HHD
 
-There is a bug when building the wireflow user management library for the HHD OS. To solve it follow these steps:
+There is a bug when building the WireFlow user management library for the HHD OS. To solve it follow these steps:
 
 1. `WF User Access Toolkit (FUNDACION TEKNIKER)` must be installed using the VIPM configuration package from the previous step
 2. Locate the VI that needs to be updated:
