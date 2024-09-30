@@ -1,10 +1,10 @@
 # Deployment
 
-| **Requested by:** | **LSST**         |
-| ----------------- | ---------------- |
-| **Doc. Code:**    | 3151_MCS_0036    |
-| **Editor:**       | Julen Garcia     |
-| **Approved by:**  | Alberto Izpizua  |
+| **Requested by:** | **LSST**        |
+| ----------------- | --------------- |
+| **Doc. Code:**    | 3151_MCS_0036   |
+| **Editor:**       | Julen Garcia    |
+| **Approved by:**  | Alberto Izpizua |
 
 ## Introduction
 
@@ -268,18 +268,18 @@ sudo yum install libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.i686
 sudo sh ./INSTALL
 ```
 
-| LabVIEW 2015 32 bit |
-|-----|
+| LabVIEW 2015 32 bit                       |
+| ----------------------------------------- |
 | labview-2015-appbuild-32bit-15.0.1-1.i386 |
-| labview-2015-core-32bit-15.0.1-1.i386 |
-| labview-2015-desktop-32bit-15.0.1-1.i386 |
+| labview-2015-core-32bit-15.0.1-1.i386     |
+| labview-2015-desktop-32bit-15.0.1-1.i386  |
 | labview-2015-examples-32bit-15.0.1-1.i386 |
-| labview-2015-exe-32bit-15.0.1-1.i386 |
-| labview-2015-help-32bit-15.0.1-1.i386 |
-| labview-2015-pro-32bit-15.0.1-1.i386 |
-| labview-2015-ref-32bit-15.0.1-1.i386 |
-| labview-2015-rte-15.0.1-1.x86_64 |
-| labview-2015-rte-32bit-15.0.1-1.i386 |
+| labview-2015-exe-32bit-15.0.1-1.i386      |
+| labview-2015-help-32bit-15.0.1-1.i386     |
+| labview-2015-pro-32bit-15.0.1-1.i386      |
+| labview-2015-ref-32bit-15.0.1-1.i386      |
+| labview-2015-rte-15.0.1-1.x86_64          |
+| labview-2015-rte-32bit-15.0.1-1.i386      |
 
 #### Install LabVIEW 2020 64 bit Professional
 
@@ -301,17 +301,17 @@ sudo ./INSTALL
 sudo umount /mnt/iso
 ```
 
-| LabVIEW 2020 64 bit |
-|-----|
+| LabVIEW 2020 64 bit                   |
+| ------------------------------------- |
 | labview-2020-appbuild.x86_64-18.0.1-1 |
-| labview-2020-core.x86_64-18.0.1-1 |
-| labview-2020-desktop.x86_64-18.0.1-1 |
+| labview-2020-core.x86_64-18.0.1-1     |
+| labview-2020-desktop.x86_64-18.0.1-1  |
 | labview-2020-examples.x86_64-18.0.1-1 |
-| labview-2020-exe.x86_64-18.0.1-1 |
-| labview-2020-help.x86_64-18.0.1-1 |
-| labview-2020-pro.x86_64-18.0.1-1 |
-| labview-2020-ref.x86_64-18.0.1-1 |
-| labview-2020-rte.x86_64-18.0.1-1 |
+| labview-2020-exe.x86_64-18.0.1-1      |
+| labview-2020-help.x86_64-18.0.1-1     |
+| labview-2020-pro.x86_64-18.0.1-1      |
+| labview-2020-ref.x86_64-18.0.1-1      |
+| labview-2020-rte.x86_64-18.0.1-1      |
 
 ##### LabVIEW dependencies installation
 
@@ -783,144 +783,144 @@ ssh -L 5901:localhost:5901 -N lsst@139.229.178.30
 This section refers to the computer used to deploy the code to the PXIs. This computer must be a Windows computer. It
 needs to have LV 2020 installed, as well as the following packages (version of packages not updated):
 
-| **INSTALLED SOFTWARE** | **VERSION** |
-| --- | --- |
-| **CompactRIO** | 20.0.0 |
-| **C Series Module Support** | 20.0.0 |
-| **CVI Runtime** | 17.0.0 |
-| **NI-DAQmx Device Driver** | 20.0.0f0 |
-| **NI-DAQmx ADE Support** | 20.0.0 |
-| **NI-DAQmx MAX Configuration** | 20.0.0 |
-| **NI Script Editor** | 20.0 |
-| **NI-DMM** | |
-| **NI 408x Device Support** | 20.0 |
-| **Configuration Support** | 20.0 |
-| **Development Support** | 20.0 |
-| **NI 407x, NI 406x, and NI 4050 Device Support** | 20.0 |
-| **Runtime Support** | 20.0 |
-| **NI-FGEN** | |
-| **Configuration Support** | 20.0 |
-| **Development Support** | 20.0 |
-| **Runtime** | 20.0 |
-| **FGEN Soft Front Panel** | 20.0 |
-| **NI-488.2 Runtime** | 20.0.0 |
-| **NI-488.2** | 20.0.0 |
-| **Vision Common Resources** | 20.0.0 |
-| **Image Processing and Machine Vision** | 20.0.0.49152 |
-| **Image Services** | 20.0.0.49152 |
-| **NI-Industrial Communications for EtherCAT** | 20.0.0f0 |
-| **NI I/O Trace** | 20.0.0f0 |
-| **IVI Compliance Package** | 20.0 |
-| **LabVIEW 2020 (64-bit)** | 20.0.0 |
-| **Control Design and Simulation Module** | 20.0.0 |
-| **MathScript RT Module** | 20.0.0 |
-| **Report Generation Toolkit For Microsoft Office** | 20.0.0 |
-| **Sound and Vibration Measurement Suite** | 20.0.0 |
-| **Sound and Vibration Toolkit** | 20.0.0 |
-| **Unit Test Framework Toolkit** | 20.0.0 |
-| **VI Analyzer Toolkit** | 20.0.0 |
-| **LabVIEW Run-Time 2012 SP1 f9** | 12.0.1 |
-| **LabVIEW Runtime 2012 SP1 f9 (64-bit)** | 12.0.1 |
-| **Measurement & Automation Explorer** | 20.0.0f0 |
-| **Measurement Studio** | Visual Studio 2005 Support - See individual versions below. |
-| **DotNET** | |
-| **Common** | 12.0.20.258 |
-| **Vision** | |
-| **Measurement Studio** | Visual Studio 2008 Support - See individual versions below. |
-| **DotNET** | |
-| **Common** | 13.5.35.173 |
-| **Common (64-bit)** | 13.5.35.173 |
-| **Vision** | |
-| **Measurement Studio** | Visual Studio 2010 Support - See individual versions below. |
-| **DotNET** | |
-| **Common** | 15.1.40.49152 |
-| **Common (64-bit)** | 15.1.40.49152 |
-| **NI-USI** | 15.0.2.6343 |
-| **NI-DCPower** | |
-| **Configuration Support** | 16.0 |
-| **Development Support** | 16.0 |
-| **Runtime** | 16.0 |
-| **NI-DCPower Soft Front Panel** | 15.2 |
-| **NI-HSDIO** | |
-| **Configuration Support** | 16.0 |
-| **Development Support** | 16.0 |
-| **Runtime** | 16.0 |
-| **NI-HWS** | 16.0.0 |
-| **NI PXI Platform Services Configuration** | 16.0.0f0 |
-| **NI PXI Platform Services Runtime** | 16.0.0f0 |
-| **NI-RIO** | 16.0.0 |
-| **NI R Series Multifunction RIO** | 16.0.0 |
-| **NI-Sync Runtime** | 16.0.0f0 |
-| **NI-Sync** | 16.0.0f0 |
-| **NI-TimeSync** | 16.0.0f0 |
-| **FlexRIO** | 16.0.0f0 |
-| **NI-PAL Software** | 16.0.0 |
-| **NI 1588-2008 Network Management 16.0.0** | 16.0.0f0 |
-| **NI Reconfigurable Oscilloscopes** | |
-| **Runtime 16.0** | 16.0 |
-| **NI-SCOPE** | |
-| **Configuration Support** | 16.0 |
-| **Development Support** | 16.0 |
-| **Runtime** | 16.0 |
-| **SCOPE Soft Front Panel** | 15.1 |
-| **NI-Serial Runtime** | 15.0.0f0 |
-| **NI-Serial Configuration** | 15.0.0f0 |
-| **NI SignalExpress** | 15.0 |
-| **NI-SWITCH** | 16.0 |
-| **SwitchCA1, 2 & 3 Device Support** | 16.0 |
-| **SwitchCA4 Device Support** | 16.0 |
-| **Configuration Support** | 16.0 |
-| **Development Support** | 16.0 |
-| **Runtime** | 16.0 |
-| **Soft Front Panel** | 16.0 |
-| **Switch Executive** | 15.1.0.49152 |
-| **NI System Configuration** | 16.0.0f0 |
-| **NI-TClk** | 16.0 |
-| **TestStand 2016** | 2016 |
-| **TestStand Runtime** | 16.0.0.185 |
-| **TestStand Sequence Editor** | 16.0.0.185 |
-| **TestStand 2016 (64-bit)** | 2016 |
-| **TestStand Runtime** | 16.0.0.185 |
-| **TestStand Sequence Editor** | 16.0.0.185 |
-| **TestStand AddOns** | TestStand Shared AddOns |
-| **NI-VISA** | 16.0 |
-| **NiVisaServer.exe** | 16.0.0.49152 |
-| **NIvisaic.exe** | 16.0.0.49152 |
-| **NI-VISA Runtime** | 16.0 |
-| **Vision Builder AI 2015 f1 (64-bit)** | 15.1.0 |
-| **Vision Builder AI 2015 f1 (32-bit)** | 15.1.0 |
-| **Vision Development Module** | 16.0.0 |
-| **Runtime Support 2016** | 16.0.0 |
-| **Development Support 2016** | 16.0.0 |
-| **Vision Assistant (32-bit)** | 16.0.0 |
-| **Vision Assistant (64-bit)** | 16.0.0 |
-| **LabVIEW** | 20.0.0 |
-| **Advanced Signal Processing Toolkit** | 16.0.0 |
-| **Control Design and Simulation Module** | 16.0.0 |
-| **Database Connectivity Toolkit** | 16.0.0 |
-| **DataFinder Toolkit** | 16.0.06357 |
-| **Datalogging and Supervisory Control** | 16.0.0 |
-| **Digital Filter Design Toolkit** | 16.0.0 |
-| **FPGA** | 16.0.0 |
-| **MathScript RT Module** | 16.0.0 |
-| **NI SoftMotion** | 16.0.0 |
-| **Real-Time** | 16.0.0 |
-| **Real-Time Trace Viewer - LabVIEW 2016 Support** | 16.0.0 |
-| **Report Generation Toolkit For Microsoft Office** | 16.0.0 |
-| **Sound and Vibration Measurement Suite** | 16.0.0 |
-| **Sound and Vibration Toolkit** | 16.0.0 |
-| **Statechart Module** | 16.0 |
-| **Unit Test Framework Toolkit** | 16.0.0 |
-| **VI Analyzer Toolkit** | 16.0.0 |
-| **Vision Development Module** | 16.0.0 |
-| **LabVIEW Run-Time 2013 SP1 f6** | 13.0.1 |
-| **LabVIEW Run-Time 2014 SP1 f5** | 14.0.1 |
-| **LabVIEW Run-Time 2015 SP1 f3** | 15.0.1 |
-| **LabVIEW Run-Time 2016** | 16.0.0 |
-| **LabVIEW Runtime 2013 SP1 f6 (64-bit)** | 13.0.1 |
-| **LabVIEW Runtime 2014 SP1 f6 (64-bit)** | 14.0.1 |
-| **LabVIEW Runtime 2015 SP1 f3 (64-bit)** | 15.0.1 |
-| **LabVIEW Runtime 2016 (64-bit)** | 16.0.0 |
+| **INSTALLED SOFTWARE**                             | **VERSION**                                                 |
+| -------------------------------------------------- | ----------------------------------------------------------- |
+| **CompactRIO**                                     | 20.0.0                                                      |
+| **C Series Module Support**                        | 20.0.0                                                      |
+| **CVI Runtime**                                    | 17.0.0                                                      |
+| **NI-DAQmx Device Driver**                         | 20.0.0f0                                                    |
+| **NI-DAQmx ADE Support**                           | 20.0.0                                                      |
+| **NI-DAQmx MAX Configuration**                     | 20.0.0                                                      |
+| **NI Script Editor**                               | 20.0                                                        |
+| **NI-DMM**                                         |                                                             |
+| **NI 408x Device Support**                         | 20.0                                                        |
+| **Configuration Support**                          | 20.0                                                        |
+| **Development Support**                            | 20.0                                                        |
+| **NI 407x, NI 406x, and NI 4050 Device Support**   | 20.0                                                        |
+| **Runtime Support**                                | 20.0                                                        |
+| **NI-FGEN**                                        |                                                             |
+| **Configuration Support**                          | 20.0                                                        |
+| **Development Support**                            | 20.0                                                        |
+| **Runtime**                                        | 20.0                                                        |
+| **FGEN Soft Front Panel**                          | 20.0                                                        |
+| **NI-488.2 Runtime**                               | 20.0.0                                                      |
+| **NI-488.2**                                       | 20.0.0                                                      |
+| **Vision Common Resources**                        | 20.0.0                                                      |
+| **Image Processing and Machine Vision**            | 20.0.0.49152                                                |
+| **Image Services**                                 | 20.0.0.49152                                                |
+| **NI-Industrial Communications for EtherCAT**      | 20.0.0f0                                                    |
+| **NI I/O Trace**                                   | 20.0.0f0                                                    |
+| **IVI Compliance Package**                         | 20.0                                                        |
+| **LabVIEW 2020 (64-bit)**                          | 20.0.0                                                      |
+| **Control Design and Simulation Module**           | 20.0.0                                                      |
+| **MathScript RT Module**                           | 20.0.0                                                      |
+| **Report Generation Toolkit For Microsoft Office** | 20.0.0                                                      |
+| **Sound and Vibration Measurement Suite**          | 20.0.0                                                      |
+| **Sound and Vibration Toolkit**                    | 20.0.0                                                      |
+| **Unit Test Framework Toolkit**                    | 20.0.0                                                      |
+| **VI Analyzer Toolkit**                            | 20.0.0                                                      |
+| **LabVIEW Run-Time 2012 SP1 f9**                   | 12.0.1                                                      |
+| **LabVIEW Runtime 2012 SP1 f9 (64-bit)**           | 12.0.1                                                      |
+| **Measurement & Automation Explorer**              | 20.0.0f0                                                    |
+| **Measurement Studio**                             | Visual Studio 2005 Support - See individual versions below. |
+| **DotNET**                                         |                                                             |
+| **Common**                                         | 12.0.20.258                                                 |
+| **Vision**                                         |                                                             |
+| **Measurement Studio**                             | Visual Studio 2008 Support - See individual versions below. |
+| **DotNET**                                         |                                                             |
+| **Common**                                         | 13.5.35.173                                                 |
+| **Common (64-bit)**                                | 13.5.35.173                                                 |
+| **Vision**                                         |                                                             |
+| **Measurement Studio**                             | Visual Studio 2010 Support - See individual versions below. |
+| **DotNET**                                         |                                                             |
+| **Common**                                         | 15.1.40.49152                                               |
+| **Common (64-bit)**                                | 15.1.40.49152                                               |
+| **NI-USI**                                         | 15.0.2.6343                                                 |
+| **NI-DCPower**                                     |                                                             |
+| **Configuration Support**                          | 16.0                                                        |
+| **Development Support**                            | 16.0                                                        |
+| **Runtime**                                        | 16.0                                                        |
+| **NI-DCPower Soft Front Panel**                    | 15.2                                                        |
+| **NI-HSDIO**                                       |                                                             |
+| **Configuration Support**                          | 16.0                                                        |
+| **Development Support**                            | 16.0                                                        |
+| **Runtime**                                        | 16.0                                                        |
+| **NI-HWS**                                         | 16.0.0                                                      |
+| **NI PXI Platform Services Configuration**         | 16.0.0f0                                                    |
+| **NI PXI Platform Services Runtime**               | 16.0.0f0                                                    |
+| **NI-RIO**                                         | 16.0.0                                                      |
+| **NI R Series Multifunction RIO**                  | 16.0.0                                                      |
+| **NI-Sync Runtime**                                | 16.0.0f0                                                    |
+| **NI-Sync**                                        | 16.0.0f0                                                    |
+| **NI-TimeSync**                                    | 16.0.0f0                                                    |
+| **FlexRIO**                                        | 16.0.0f0                                                    |
+| **NI-PAL Software**                                | 16.0.0                                                      |
+| **NI 1588-2008 Network Management 16.0.0**         | 16.0.0f0                                                    |
+| **NI Reconfigurable Oscilloscopes**                |                                                             |
+| **Runtime 16.0**                                   | 16.0                                                        |
+| **NI-SCOPE**                                       |                                                             |
+| **Configuration Support**                          | 16.0                                                        |
+| **Development Support**                            | 16.0                                                        |
+| **Runtime**                                        | 16.0                                                        |
+| **SCOPE Soft Front Panel**                         | 15.1                                                        |
+| **NI-Serial Runtime**                              | 15.0.0f0                                                    |
+| **NI-Serial Configuration**                        | 15.0.0f0                                                    |
+| **NI SignalExpress**                               | 15.0                                                        |
+| **NI-SWITCH**                                      | 16.0                                                        |
+| **SwitchCA1, 2 & 3 Device Support**                | 16.0                                                        |
+| **SwitchCA4 Device Support**                       | 16.0                                                        |
+| **Configuration Support**                          | 16.0                                                        |
+| **Development Support**                            | 16.0                                                        |
+| **Runtime**                                        | 16.0                                                        |
+| **Soft Front Panel**                               | 16.0                                                        |
+| **Switch Executive**                               | 15.1.0.49152                                                |
+| **NI System Configuration**                        | 16.0.0f0                                                    |
+| **NI-TClk**                                        | 16.0                                                        |
+| **TestStand 2016**                                 | 2016                                                        |
+| **TestStand Runtime**                              | 16.0.0.185                                                  |
+| **TestStand Sequence Editor**                      | 16.0.0.185                                                  |
+| **TestStand 2016 (64-bit)**                        | 2016                                                        |
+| **TestStand Runtime**                              | 16.0.0.185                                                  |
+| **TestStand Sequence Editor**                      | 16.0.0.185                                                  |
+| **TestStand AddOns**                               | TestStand Shared AddOns                                     |
+| **NI-VISA**                                        | 16.0                                                        |
+| **NiVisaServer.exe**                               | 16.0.0.49152                                                |
+| **NIvisaic.exe**                                   | 16.0.0.49152                                                |
+| **NI-VISA Runtime**                                | 16.0                                                        |
+| **Vision Builder AI 2015 f1 (64-bit)**             | 15.1.0                                                      |
+| **Vision Builder AI 2015 f1 (32-bit)**             | 15.1.0                                                      |
+| **Vision Development Module**                      | 16.0.0                                                      |
+| **Runtime Support 2016**                           | 16.0.0                                                      |
+| **Development Support 2016**                       | 16.0.0                                                      |
+| **Vision Assistant (32-bit)**                      | 16.0.0                                                      |
+| **Vision Assistant (64-bit)**                      | 16.0.0                                                      |
+| **LabVIEW**                                        | 20.0.0                                                      |
+| **Advanced Signal Processing Toolkit**             | 16.0.0                                                      |
+| **Control Design and Simulation Module**           | 16.0.0                                                      |
+| **Database Connectivity Toolkit**                  | 16.0.0                                                      |
+| **DataFinder Toolkit**                             | 16.0.06357                                                  |
+| **Datalogging and Supervisory Control**            | 16.0.0                                                      |
+| **Digital Filter Design Toolkit**                  | 16.0.0                                                      |
+| **FPGA**                                           | 16.0.0                                                      |
+| **MathScript RT Module**                           | 16.0.0                                                      |
+| **NI SoftMotion**                                  | 16.0.0                                                      |
+| **Real-Time**                                      | 16.0.0                                                      |
+| **Real-Time Trace Viewer - LabVIEW 2016 Support**  | 16.0.0                                                      |
+| **Report Generation Toolkit For Microsoft Office** | 16.0.0                                                      |
+| **Sound and Vibration Measurement Suite**          | 16.0.0                                                      |
+| **Sound and Vibration Toolkit**                    | 16.0.0                                                      |
+| **Statechart Module**                              | 16.0                                                        |
+| **Unit Test Framework Toolkit**                    | 16.0.0                                                      |
+| **VI Analyzer Toolkit**                            | 16.0.0                                                      |
+| **Vision Development Module**                      | 16.0.0                                                      |
+| **LabVIEW Run-Time 2013 SP1 f6**                   | 13.0.1                                                      |
+| **LabVIEW Run-Time 2014 SP1 f5**                   | 14.0.1                                                      |
+| **LabVIEW Run-Time 2015 SP1 f3**                   | 15.0.1                                                      |
+| **LabVIEW Run-Time 2016**                          | 16.0.0                                                      |
+| **LabVIEW Runtime 2013 SP1 f6 (64-bit)**           | 13.0.1                                                      |
+| **LabVIEW Runtime 2014 SP1 f6 (64-bit)**           | 14.0.1                                                      |
+| **LabVIEW Runtime 2015 SP1 f3 (64-bit)**           | 15.0.1                                                      |
+| **LabVIEW Runtime 2016 (64-bit)**                  | 16.0.0                                                      |
 
 The following modules are not included with the LabVIEW installer and must be downloaded:
 
@@ -984,39 +984,39 @@ Steps for setting up the Handheld Device.
 
 Ensure that the PXI is configured as shown in Table 3 and has the software from Table 4 installed.
 
-| **SYSTEM CONFIGURATION** | |
-| --- |---|
-| **Hostname** | TMA-PXI |
-| **DNS Name** | TMA-PXI |
-| **Vendor** | National Instruments |
-| **Model** | PXIe-8880 |
-| **Serial Number** | 2F23AA3D |
-| **Firmware Version** | 8.8.0f0 |
-| **Operating System** | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
-| **System Start Time** | 05/09/2022 15:48:05 |
-| **Comments** | None |
-| **Locale** | English |
-| **Halt on IP failure** | False |
+| **SYSTEM CONFIGURATION** |                                                         |
+| ------------------------ | ------------------------------------------------------- |
+| **Hostname**             | TMA-PXI                                                 |
+| **DNS Name**             | TMA-PXI                                                 |
+| **Vendor**               | National Instruments                                    |
+| **Model**                | PXIe-8880                                               |
+| **Serial Number**        | 2F23AA3D                                                |
+| **Firmware Version**     | 8.8.0f0                                                 |
+| **Operating System**     | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
+| **System Start Time**    | 05/09/2022 15:48:05                                     |
+| **Comments**             | None                                                    |
+| **Locale**               | English                                                 |
+| **Halt on IP failure**   | False                                                   |
 
-| **INSTALLED SOFTWARE** | **VERSION** |
-| --- | --- |
-| **NI Scan Engine** | 9.0.0.49152-0+f0 |
-| **LabVIEW Real-Time** | 20.0.0.49154-0+f4 |
-| **Network Streams** | 20.0.0.49156-0+f4 |
-| **Run-Time Engine for Web Services** | 20.0.0.49152-0+f0 |
-| **Variable Legacy Protocol Support** | 5.12.0.49154-0+f2 |
-| **NI PXI Platform Services** | 20.0.0.49152-0+f0 |
-| **NI-Watchdog** | 20.0.0.49152-0+f0 |
-| **Variable Legacy Server Support** | 5.12.0.49154-0+f2 |
-| **Variable Client Support for LabVIEW RT** | 20.0.0.49153-0+f1 |
-| **NI-RIO IO Scan** | 20.0.0.49152-0+f0 |
-| **NI System Configuration** | 20.0.0.49152-0+f0 |
+| **INSTALLED SOFTWARE**                        | **VERSION**       |
+| --------------------------------------------- | ----------------- |
+| **NI Scan Engine**                            | 9.0.0.49152-0+f0  |
+| **LabVIEW Real-Time**                         | 20.0.0.49154-0+f4 |
+| **Network Streams**                           | 20.0.0.49156-0+f4 |
+| **Run-Time Engine for Web Services**          | 20.0.0.49152-0+f0 |
+| **Variable Legacy Protocol Support**          | 5.12.0.49154-0+f2 |
+| **NI PXI Platform Services**                  | 20.0.0.49152-0+f0 |
+| **NI-Watchdog**                               | 20.0.0.49152-0+f0 |
+| **Variable Legacy Server Support**            | 5.12.0.49154-0+f2 |
+| **Variable Client Support for LabVIEW RT**    | 20.0.0.49153-0+f1 |
+| **NI-RIO IO Scan**                            | 20.0.0.49152-0+f0 |
+| **NI System Configuration**                   | 20.0.0.49152-0+f0 |
 | **NI-Industrial Communications for EtherCAT** | 20.0.0.49152-0+f0 |
-| **NI System Configuration Remote Support** | 20.0.0.49152-0+f0 |
-| **NI-RIO** | 20.0.0.49153-0+f1 |
-| **NI-RIO Server** | 20.0.0.49153-0+f1 |
-| **WebDAV Server** | 20.0.0.49152-0+f0 |
-| **NI Scan Engine** | 9.0.0.49152-0+f0 |
+| **NI System Configuration Remote Support**    | 20.0.0.49152-0+f0 |
+| **NI-RIO**                                    | 20.0.0.49153-0+f1 |
+| **NI-RIO Server**                             | 20.0.0.49153-0+f1 |
+| **WebDAV Server**                             | 20.0.0.49152-0+f0 |
+| **NI Scan Engine**                            | 9.0.0.49152-0+f0  |
 
 #### TMA Copy required files to the PXI
 
@@ -1211,37 +1211,37 @@ Copy the file from the `PXIController\ESIFiles\EIB` folder to the PXI using `scp
 
 Ensure that the PXI is configured as shown in Table 5 and has the software from Table 6 installed.
 
-| **SYSTEM CONFIGURATION** | |
-| --- | --- |
-| **Hostname** | AxesPXI |
-| **DNS Name** | AxesPXI |
-| **Vendor** | National Instruments |
-| **Model** | PXIe-8880 |
-| **Serial Number** | 2F23EB99 |
-| **Firmware Version** | 8.8.0f0 |
-| **Operating System** | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
-| **System Start Time** | 27/06/2019 11:42:28 |
-| **Comments** | None |
-| **Locale** | English |
-| **Halt on IP failure** | False |
+| **SYSTEM CONFIGURATION** |                                                         |
+| ------------------------ | ------------------------------------------------------- |
+| **Hostname**             | AxesPXI                                                 |
+| **DNS Name**             | AxesPXI                                                 |
+| **Vendor**               | National Instruments                                    |
+| **Model**                | PXIe-8880                                               |
+| **Serial Number**        | 2F23EB99                                                |
+| **Firmware Version**     | 8.8.0f0                                                 |
+| **Operating System**     | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
+| **System Start Time**    | 27/06/2019 11:42:28                                     |
+| **Comments**             | None                                                    |
+| **Locale**               | English                                                 |
+| **Halt on IP failure**   | False                                                   |
 
-| **INSTALLED SOFTWARE** | **VERSION** |
-| --- | --- |
-| **NI Scan Engine** | 9.0.0.49152-0+f0 |
-| **LabVIEW Real-Time** | 20.0.0.49154-0+f4 |
-| **Network Streams** | 20.0.0.49156-0+f4 |
-| **Network Variable Engine** | 20.0.0.49153-0+f1 |
-| **Run-Time Engine for Web Services** | 20.0.0.49152-0+f0 |
-| **NI PXI Platform Services** | 20.0.0.49152-0+f0 |
-| **NI-Watchdog** | 20.0.0.49152-0+f0 |
-| **Variable Client Support for LabVIEW RT** | 20.0.0.49153-0+f1 |
-| **NI-RIO IO Scan** | 20.0.0.49152-0+f0 |
-| **NI System Configuration** | 20.0.0.49152-0+f0 |
+| **INSTALLED SOFTWARE**                        | **VERSION**       |
+| --------------------------------------------- | ----------------- |
+| **NI Scan Engine**                            | 9.0.0.49152-0+f0  |
+| **LabVIEW Real-Time**                         | 20.0.0.49154-0+f4 |
+| **Network Streams**                           | 20.0.0.49156-0+f4 |
+| **Network Variable Engine**                   | 20.0.0.49153-0+f1 |
+| **Run-Time Engine for Web Services**          | 20.0.0.49152-0+f0 |
+| **NI PXI Platform Services**                  | 20.0.0.49152-0+f0 |
+| **NI-Watchdog**                               | 20.0.0.49152-0+f0 |
+| **Variable Client Support for LabVIEW RT**    | 20.0.0.49153-0+f1 |
+| **NI-RIO IO Scan**                            | 20.0.0.49152-0+f0 |
+| **NI System Configuration**                   | 20.0.0.49152-0+f0 |
 | **NI-Industrial Communications for EtherCAT** | 20.0.0.49152-0+f0 |
-| **NI System Configuration Remote Support** | 20.0.0.49152-0+f0 |
-| **NI-RIO** | 20.0.0.49153-0+f1 |
-| **NI-RIO Server** | 20.0.0.49153-0+f1 |
-| **WebDAV Server** | 20.0.0.49152-0+f0 |
+| **NI System Configuration Remote Support**    | 20.0.0.49152-0+f0 |
+| **NI-RIO**                                    | 20.0.0.49153-0+f1 |
+| **NI-RIO Server**                             | 20.0.0.49153-0+f1 |
+| **WebDAV Server**                             | 20.0.0.49152-0+f0 |
 
 #### Axes Copy required files to the PXI
 
@@ -1312,30 +1312,30 @@ The trajectory generation is developed by Tekniker. The code is stored in [this 
 
 Ensure that the PXI is configured as shown in Table 5 and has the software from Table 6 installed.
 
-| **SYSTEM CONFIGURATION** | |
-| --- | --- |
-| **Hostname** | AuxSystems |
-| **DNS Name** | AuxSystems.local |
-| **Vendor** | National Instruments |
-| **Model** | PXIe-8880-Beckhoff |
-| **Serial Number** | 2F23EB99 |
-| **Firmware Version** | 8.8.0f0 |
-| **Operating System** | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
-| **System Start Time** | 27/06/2019 11:42:28 |
-| **Comments** | None |
-| **Locale** | English |
-| **Halt on IP failure** | False |
+| **SYSTEM CONFIGURATION** |                                                         |
+| ------------------------ | ------------------------------------------------------- |
+| **Hostname**             | AuxSystems                                              |
+| **DNS Name**             | AuxSystems.local                                        |
+| **Vendor**               | National Instruments                                    |
+| **Model**                | PXIe-8880-Beckhoff                                      |
+| **Serial Number**        | 2F23EB99                                                |
+| **Firmware Version**     | 8.8.0f0                                                 |
+| **Operating System**     | NI Linux Real-Time x64 4.14.146-rt67-cg-8.0.0f1-x64-139 |
+| **System Start Time**    | 27/06/2019 11:42:28                                     |
+| **Comments**             | None                                                    |
+| **Locale**               | English                                                 |
+| **Halt on IP failure**   | False                                                   |
 
-| **INSTALLED SOFTWARE** | **VERSION** |
-| --- | --- |
-| **LabVIEW Real-Time** | 20.0.0.49154-0+f4 |
-| **Network Variable Engine** | 20.0.0.49153-0+f1 |
-| **Run-Time Engine for Web Services** | 20.0.0.49152-0+f0 |
-| **Variable Legacy Protocol Support** | 5.12.0.49154-0+f2 |
-| **Variable Legacy Server Support** | 5.12.0.49154-0+f2 |
+| **INSTALLED SOFTWARE**                     | **VERSION**       |
+| ------------------------------------------ | ----------------- |
+| **LabVIEW Real-Time**                      | 20.0.0.49154-0+f4 |
+| **Network Variable Engine**                | 20.0.0.49153-0+f1 |
+| **Run-Time Engine for Web Services**       | 20.0.0.49152-0+f0 |
+| **Variable Legacy Protocol Support**       | 5.12.0.49154-0+f2 |
+| **Variable Legacy Server Support**         | 5.12.0.49154-0+f2 |
 | **Variable Client Support for LabVIEW RT** | 20.0.0.49153-0+f1 |
 | **NI System Configuration Remote Support** | 20.0.0.49152-0+f0 |
-| **WebDAV Server** | 20.0.0.49152-0+f0 |
+| **WebDAV Server**                          | 20.0.0.49152-0+f0 |
 
 #### AuxSystems Copy required files to the PXI
 
