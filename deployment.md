@@ -20,6 +20,7 @@ sections for:
 - [Axes PXI](#axes-pxi)
   - [cRIO 9144](#ethercat-crio-9144)
 - [AuxSystems PXI](#auxsystems-pxi)
+- [Closing the Ethercat Ring](#closing-the-ethercat-ring)
 - [Bosch Rexroth drive system](#bosch-rexroth-drive-system)
 - [Watlow RMC](#watlow-temperature-controller)
 - [Phoenix Contact IOs](#phoenix-contact-ios)
