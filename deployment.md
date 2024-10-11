@@ -1366,6 +1366,45 @@ Steps for deploying the code to the TMA PXI:
 - Build the rtexe.
 - Deploy the rtexe to the target and set it to run on start up.
 
+## Closing the ethercat ring
+
+### Hardware configuration
+
+Note that for closing the ethercat ring, two compatible ports of the PXI must be used, these ports must be configured
+as follows (for this step the NI MAX must be used):
+
+- **Master port**, the one that will be wired to the first IN port of the first slave, the ethercat ID must be smaller than
+  the one for the return. For example ID = 1.
+- **Redundancy port**, the one that will close the ring coming from the last slave's OUT port, the ethercat ID must be higher
+  than the one for the master port. For example ID = 2.
+
+### Software steps
+
+Steps for closing the ethercat ring:
+
+- Connect the ethercat line start point to the master port and **DON'T** connect anything to the redundancy port.
+- Create a blank project with the scan engine configuration for the target copied from the final project (TMA-PXI or
+  AXES-PXI projects depending on the target).
+- Deploy the empty target configuration, just with the scan engine configuration to the target and reboot. This is to
+  have a clean start, with no ethercat masters on the target.
+- Open the project that corresponds to the current target and deploy the master configuration to the master port ID from
+  the LabVIEW project. Leave the scan engine in ACTIVE after the deploy
+- Using the NI Distributed System Manager, check that the target has the ethercat master deployed and that is in active
+- Disconnect the LabVIEW project from the target
+- Using the NI Distributed System Manager, set the scan engine to configuration
+- Connect the ethercat return wire to the redundancy port in the target
+- Using the NI Distributed System Manager, do a refresh modules
+- If everything went correctly the redundancy should be active now. There is a property from the ethercat master that can
+  be read from LabVIEW that tells if the redundancy is active or not.
+
+  ![Cable Redundancy Property](Resources/CableRedundancyProperty.png)
+  ![Cable Redundancy Property Context Help](Resources/CableRedundancyPropertyContextHelp.png)
+
+- Using the NI Distributed System Manager, set the scan engine to active and now the ring is complete and active
+
+> After a reboot the PXI is not changed to active automatically and the redundancy is not active.
+> Code in the target is implemented to perform the refresh modules, activate the redundancy, and set the scan engine to active.
+
 ## Bosch Rexroth drive system
 
 First the Ethernet configuration in the MLC must be set. Follow next steps to perform the IP change
