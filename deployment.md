@@ -1477,3 +1477,182 @@ Both are configured in the same way
 - Navigate to file corresponding to connected IOs. The files are named with the name of the cabinet, and for cabinet TMA-AZ-CS-CBT-0101 there are two files, one with suffix 220A1 and the other with suffix 220A2 for modules with the same name inside this cabinet.
 - Chose the header and right click.
   - Select parameters->Download all parameters
+
+## CCW Aux Cabinet
+
+There is a small cabinet for controlling the CCW when the CCW is not connected to the TMA. This cabinet contains a similar
+setup to the one of the TMA, but in a smaller scale.
+
+### CCWauxCC
+
+This is the computer inside the cabinet that runs the EUI for the cabinet and the operation manager.
+
+#### MtMount Operation Manager
+
+Here the code is the same as for the TMA, but the configuration is not, that's why there is a specific repo with the configuration for
+this computer-cabinet setup.
+[CCWaux operation manager specific repo](https://github.com/lsst-ts/ts_tma_operation-manager_mt-mount-operation-manager_ccw-aux)
+
+Deploying the operation manager for the CCWaux:
+
+- Clone the repo into the CCWauxCC
+- Navigate into the folder
+- Bring up the docker image with the custom configuration from the repo -> `docker-compose up -d`
+
+  > Note that the docker image is stored in github containers as a private repo, so for downloading a login into github
+  > is required with the right permissions
+
+#### EUI for CCWaux
+
+Here the code is the same as for the TMA, but the configuration is not.
+
+- Download the desired build for the EUI (latest version is recommended) from
+  [here](https://github.com/lsst-ts/ts_tma_labview_hmi-computers/releases/latest)
+- Extract the files at the desired location
+- Replace the following files and lines in the config files
+  - Copy the files `CCWaux_HMIWindowsTelemetryVariables.ini` and `CCWaux_TelemetryTopicsConfiguration.ini` from the repo
+    located inside the *Configuration* folder into the extracted files `data` folder.
+  - Remove the files that won't be needed -> `HMIWindowsTelemetryVariables.ini` and `TelemetryTopicsConfiguration.ini`
+  - Edit the `HMIConfig.xml`:
+    - Change the value of the *CCWAuxMode* field to *TRUE*
+    - Change the value of the *UsersDefinitionPath* field to the path to the *HMI_UserManagementFile.uat* file, usually
+      inside the installation `data`folder
+    - Change the value of the *HMIWindowsTelemetryVariables_file_path* field to the path to the
+      *CCWaux_HMIWindowsTelemetryVariables.ini* file, usually inside the installation `data`folder
+    - Change the value of the *TelemetryTopics_file_path* field to the path to the
+      *CCWaux_TelemetryTopicsConfiguration.ini* file, usually inside the installation `data`folder
+    - Change the value of the *Database_Settings.IP* field to the IP of the CCWauxCC *192.168.209.200*
+    - Change the value of the IP in *Actual_Commander_Data.Actual_commader_url* field to the IP of the cRIO *192.168.209.11*
+    - Change the value of the *TekNSVtotalClients* field to *1*
+    - Change the value of the IP in *TekNsvClientConfiguration0.Remote_Adress* field to the IP of the cRIO *192.168.209.11*
+- Run the *eui* executable
+
+### Low level controller (cRIO)
+
+#### RTEXE
+
+This cabinet does not contain a PXI, as they are way too expensive for the purpose of this cabinet, that's why the
+low-level controller in this case is  cRIO. Apart from the hardware difference, the code is almost the same for both the
+TMA and the CCWaux. Both are stored in the same [repo](https://github.com/lsst-ts/ts_tma_labview_pxi-controller) the only
+difference is that the project for the CCWaux is the one called `LSST_CCWAuxCRIOController.lvproj`.
+
+For building the `rtexe` is quite the same as for the main PXIs:
+
+- Download the repo
+- Open the project -> `LSST_CCWAuxCRIOController.lvproj`
+  - Open the Main.
+  - Solve the requested dependencies if they appear.
+  - Close the main.
+  - Save all the request files.
+- Deploy the I/O module configuration
+- Build the rtexe.
+- Deploy the rtexe to the target and set it to run on start up.
+- Check the the cRIO started properly
+
+  ```bash
+  admin@NI-cRIO-9030-01BE3F54:~# labviewmessages
+  2025-01-09T13:07:17.189+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Version: 6.2.3
+  2025-01-09T13:07:19.181+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Init CCWauxMain
+  2025-01-09T13:07:19.510+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Initialized Variable server
+  2025-01-09T13:07:33.713+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Ping to Safety OK
+  2025-01-09T13:07:34.216+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Temp. OK
+  2025-01-09T13:07:49.232+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: DataBase OK
+  2025-01-09T13:07:52.636+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: CAR Initialized
+  2025-01-09T13:07:52.702+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: DiscreteStatereporting launched
+  2025-01-09T13:07:52.718+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SubscribeSubsystem: DiscreteStateReporting MinimumCommand: 2501 MaximumCommand: 2599 QueueRefsValid: TRUE
+  2025-01-09T13:07:55.752+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Safety launched
+  2025-01-09T13:07:55.838+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SubscribeSubsystem: Safety MinimumCommand: 1801 MaximumCommand: 1899 QueueRefsValid: TRUE
+  2025-01-09T13:07:55.882+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Safety launched - log to see errors
+  2025-01-09T13:07:55.883+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SafetyTask_Started
+  2025-01-09T13:08:52.851+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Bosch DC launched
+  2025-01-09T13:08:52.869+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: BoschPowerSupplyTask started
+  2025-01-09T13:08:52.894+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SubscribeSubsystem: BoschPowerSupply MinimumCommand: 65535 MaximumCommand: 65535 QueueRefsValid: TRUE
+  2025-01-09T13:08:59.014+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: Bosch task launched
+  2025-01-09T13:08:59.039+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SubscribeSubsystem: BoschTask MinimumCommand: 10357 MaximumCommand: 10357 QueueRefsValid: TRUE
+  2025-01-09T13:08:59.051+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: BoschTask started.
+  2025-01-09T13:08:59.311+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: CCW task launched
+  2025-01-09T13:08:59.363+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: SubscribeSubsystem: CCW MinimumCommand: 1001 MaximumCommand: 1099 QueueRefsValid: TRUE
+  2025-01-09T13:08:59.473+00:00 NI-cRIO-9030-01BE3F54 LabVIEW_Custom_Log: CCW initialization actions completed
+  admin@NI-cRIO-9030-01BE3F54:~#
+  ```
+
+  > For seeing the messages above the following alias is needed inside the `/home/admin/.bashrc` file ->
+  > `alias labviewmessages="cat /var/log/messages | grep LabVIEW_Custom"`
+
+#### Libraries
+
+Copy the following libraries to the `/usr/local/lib` folder inside the PXI.
+
+Library list:
+
+- `libGetClocks.so*`
+- `libaci.so*`
+- `libcrypto.so.1.0.0*`
+- `libmlpi.so*`
+- `libssl.so.1.0.0*`
+
+##### MLPI files
+
+First copy the `libmlpi.so` to `/usr/local/lib` and then create a softlink in the `/c/ni-rt` folder called system, as follows.
+
+```bash
+cd /c/ni-rt
+
+ln -s /usr/local/lib/ system
+```
+
+#### Configuration files
+
+Add the needed configuration files in `/c/Configuration`, these are:
+
+- `/c/Configuration/CAR_TCP/`
+  - `CommandTCP_Config.xml`: taken from the repo inside `ESIFiles/CommandCommunicationTMAPXI/CommandTCP_Config.xml`
+- `/c/Configuration/DiscreteStatereporting/`
+  - `DiscreteStateReporting.json`: taken from the repo inside `ESIFiles/DiscreteStateReporting/CCWaux/DiscreteStateReporting.json`
+- `/c/Configuration/Safety/`
+  - `Safety_ModBusMapping.txt`: taken from the repo inside `CCWAuxExpecificCode/Safety/MappingFiles`
+  - `Safety_ModBusMapping_ForReadWriteDefinition.txt`: taken from the repo inside `CCWAuxExpecificCode/Safety/MappingFiles`
+  - `ServerConfig.ini`: taken from the repo inside `CCWAuxExpecificCode/Safety/MappingFiles`
+- `/c/Configuration/TekNSVs/`
+  - `ReceiverConfig.xml`: taken from the repo inside `ESIFiles/TekNSV/TMA_PXI/ReceiverConfig.xml`
+
+After copying those files the configuration folder should look like this:
+
+```bash
+admin@NI-cRIO-9030-01BE3F54:/c/Configuration# ll -R
+.:
+total 28
+drwxr-xr-x    6 lvuser   ni            4096 Dec  9 18:29 ./
+drwxrwxr-x    4 lvuser   ni            4096 Mar 11  2021 ../
+drwxrwxr-x    2 lvuser   ni            4096 Dec  9 16:17 CAR_TCP/
+drwxr-xr-x    2 admin    administ      4096 Dec  9 16:20 DiscreteStateReporting/
+drwxrwxr-x    2 lvuser   ni            4096 Dec  9 16:48 Safety/
+drwxr-xr-x    2 admin    administ      4096 Dec  9 16:52 TekNSVs/
+
+./CAR_TCP:
+total 12
+drwxrwxr-x    2 lvuser   ni            4096 Dec  9 16:17 ./
+drwxr-xr-x    6 lvuser   ni            4096 Dec  9 18:29 ../
+-rwxrwxrwx    1 lvuser   ni             564 Dec  9 16:18 CommandTCP_Config.xml*
+
+./DiscreteStateReporting:
+total 12
+drwxr-xr-x    2 admin    administ      4096 Dec  9 16:20 ./
+drwxr-xr-x    6 lvuser   ni            4096 Dec  9 18:29 ../
+-rw-r--r--    1 admin    administ       371 Dec  9 16:32 DiscreteStateReporting.json
+
+./Safety:
+total 20
+drwxrwxr-x    2 lvuser   ni            4096 Dec  9 16:48 ./
+drwxr-xr-x    6 lvuser   ni            4096 Dec  9 18:29 ../
+-rwxrwxr-x    1 lvuser   ni            2111 Jan  7 10:07 Safety_ModBusMapping.txt*
+-rwxr-xr-x    1 lvuser   ni            1286 Jan  7 10:07 Safety_ModBusMapping_ForReadWriteDefinition.txt*
+-rwxrwxrwx    1 lvuser   ni             128 Dec  9 16:35 ServerConfig.ini*
+
+./TekNSVs:
+total 12
+drwxr-xr-x    2 admin    administ      4096 Dec  9 16:52 ./
+drwxr-xr-x    6 lvuser   ni            4096 Dec  9 18:29 ../
+-rwxr-xr-x    1 admin    administ       565 Dec  9 16:52 ReceiverConfig.xml*
+admin@NI-cRIO-9030-01BE3F54:/c/Configuration#
+```
