@@ -243,6 +243,23 @@ The following steps were taken from [this source.](https://linux4one.com/how-to-
   nano ~/.gitconfig
   ```
 
+#### Add `motd`
+
+Include some identifying text into the `/etc/motd` file, for example:
+
+```bash
+
+███    ███  ██████  ██████ 
+████  ████ ██      ██      
+██ ████ ██ ██      ██      
+██  ██  ██ ██      ██      
+██      ██  ██████  ██████ 
+              by TEKNIKER  
+                           
+```
+
+> [Tool used](https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=mcc)
+
 #### Install the MtMount Operation Manager
 
 Follow the steps defined at the doc of [this repository](https://github.com/lsst-ts/ts_tma_operation-manager_mt-mount-operation-manager/blob/develop/tma_management/doc/tma_management_program.md).
@@ -1050,6 +1067,24 @@ cd /c/ni-rt
 ln -s /usr/local/lib/ system
 ```
 
+#### Add `motd` for TMA-PXI
+
+Include some identifying text into the `/etc/motd` file, for example:
+
+```bash
+
+████████ ███    ███  █████      ██████  ██   ██ ██ 
+   ██    ████  ████ ██   ██     ██   ██  ██ ██  ██ 
+   ██    ██ ████ ██ ███████     ██████    ███   ██ 
+   ██    ██  ██  ██ ██   ██     ██       ██ ██  ██ 
+   ██    ██      ██ ██   ██     ██      ██   ██ ██ 
+                                      by TEKNIKER  
+                                                   
+
+```
+
+> [Tool used](https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=TMA%20PXI)
+
 #### TMA PTP configuration
 
 Follow next steps to configure the ptp in the PXI.
@@ -1260,6 +1295,23 @@ Library list:
 - `libtrajectory.so*`
 - `lvimptsl.so*`
 
+#### Add `motd` for AXES-PXI
+
+Include some identifying text into the `/etc/motd` file, for example:
+
+```bash
+
+ █████  ██   ██ ███████ ███████     ██████  ██   ██ ██ 
+██   ██  ██ ██  ██      ██          ██   ██  ██ ██  ██ 
+███████   ███   █████   ███████     ██████    ███   ██ 
+██   ██  ██ ██  ██           ██     ██       ██ ██  ██ 
+██   ██ ██   ██ ███████ ███████     ██      ██   ██ ██ 
+                                          by TEKNIKER  
+                                                       
+```
+
+> [Tool used](https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=AXES%20PXI)
+
 #### PTP configuration Axes
 
 The PTP is configured in the same way as done for the TMA-PXI, see [here](#tma-ptp-configuration).
@@ -1349,6 +1401,23 @@ Copy the following libraries to the `/usr/local/lib` folder inside the PXI.
 Library list:
 
 - `libGetClocks.so*`
+
+#### Add `motd` for AUX-PXI
+
+Include some identifying text into the `/etc/motd` file, for example:
+
+```bash
+
+ █████  ██    ██ ██   ██     ██████  ██   ██ ██ 
+██   ██ ██    ██  ██ ██      ██   ██  ██ ██  ██ 
+███████ ██    ██   ███       ██████    ███   ██ 
+██   ██ ██    ██  ██ ██      ██       ██ ██  ██ 
+██   ██  ██████  ██   ██     ██      ██   ██ ██ 
+                                   by TEKNIKER  
+                                                
+```
+
+> [Tool used](https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=AUX%20PXI)
 
 #### AuxSystems PTP configuration
 
