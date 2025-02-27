@@ -1590,11 +1590,54 @@ Here the code is the same as for the TMA, but the configuration is not.
       *CCWaux_HMIWindowsTelemetryVariables.ini* file, usually inside the installation `data`folder
     - Change the value of the *TelemetryTopics_file_path* field to the path to the
       *CCWaux_TelemetryTopicsConfiguration.ini* file, usually inside the installation `data`folder
-    - Change the value of the *Database_Settings.IP* field to the IP of the CCWauxCC *192.168.209.200*
+    - Change the value of the *Database_Settings.IP* field to the IP of the MCC *139.229.178.30*
     - Change the value of the IP in *Actual_Commander_Data.Actual_commader_url* field to the IP of the cRIO *192.168.209.11*
     - Change the value of the *TekNSVtotalClients* field to *1*
     - Change the value of the IP in *TekNsvClientConfiguration0.Remote_Adress* field to the IP of the cRIO *192.168.209.11*
 - Run the *eui* executable
+
+#### Database for CCWaux
+
+To reduce problems with the different settings, the same database is used for the CCW when connected to the CCWaux cabinet
+and to the TMA. For having this, the local port *3306* for the database is forwarded to the MCC using the firewall.
+
+- Enable firewall -> `sudo systemctl enable firewalld`
+- Reboot machine -> `sudo reboot`
+- Open database port, as well as other required ports
+  
+  ```bash
+  sudo firewall-cmd --zone=public --add-port=50006/tcp --permanent --zone=public --add-port=40005/tcp --permanent --zone=public --add-port=50005/tcp --permanent --zone=public --add-port=40006/tcp --permanent --zone=public --add-port=7500/tcp --permanent --zone=public --add-port=3306/tcp --permanent --zone=public --add-port=3015/tcp --permanent --zone=public --add-port=50013/tcp --permanent --zone=public --add-port=50015/tcp --permanent --zone=public --add-port=50035/tcp --permanent --zone=public --add-port=50016/tcp --permanent --zone=public --add-port=50017/tcp --permanent --zone=public --add-port=30005/tcp --permanent
+  sudo firewall-cmd --add-port=3306/tcp --add-port=319/udp --add-port=320/udp --permanent
+  sudo firewall-cmd --reload
+  ```
+
+- Forward port
+
+  ```bash
+  sudo firewall-cmd --add-forward-port=port=3306:proto=tcp:toport=3306:toaddr=139.229.178.30 --permanent
+  sudo firewall-cmd --zone=public --add-masquerade --permanent
+  sudo firewall-cmd --reload
+  ```
+
+- The configuration should look like this:
+
+  ```bash
+  $ sudo firewall-cmd --list-all
+  [sudo] password for lsst:
+  public (active)
+    target: default
+    icmp-block-inversion: no
+    interfaces: em1 p1p1 p2p2
+    sources:
+    services: dhcpv6-client ssh
+    ports: 319/udp 320/udp 50006/tcp 40005/tcp 50005/tcp 40006/tcp 7500/tcp 3306/tcp 50035/tcp
+    protocols:
+    masquerade: yes
+    forward-ports: port=3306:proto=tcp:toport=3306:toaddr=139.229.178.30
+    source-ports:
+    icmp-blocks:
+    rich rules:
+  ```
 
 ### Low level controller (cRIO)
 
