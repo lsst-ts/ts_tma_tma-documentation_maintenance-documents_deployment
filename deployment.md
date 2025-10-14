@@ -1043,7 +1043,7 @@ In addition to what is described in this section,
 
 ##### TMA Libraries
 
-Copy the following libraries to the `/usr/local/lib` folder inside the PXI.
+Copy the following libraries to the `/usr/local/lib` folder inside the PXI. [These can be found here](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/local_libraries_to_deploy_on_PXIs)
 
 Library list:
 
