@@ -18,7 +18,7 @@ sections for:
 - [Handheld device (HHD)](#hhd)
 - [TMA PXI](#tma-pxi)
 - [Axes PXI](#axes-pxi)
-  - [cRIO 9144](#ethercat-crio-9144)
+  - [cRIO 9145](#ethercat-crio-9145)
 - [AuxSystems PXI](#auxsystems-pxi)
 - [Closing the Ethercat Ring](#closing-the-ethercat-ring)
 - [Bosch Rexroth drive system](#bosch-rexroth-drive-system)
@@ -1346,7 +1346,7 @@ Steps for deploying the code to the TMA PXI:
 - Build the rtexe.
 - Deploy the rtexe to the target and set it to run on start up.
 
-### Ethercat cRIO 9144
+### Ethercat cRIO 9145
 
 Steps for setting up the cRIO:
 
