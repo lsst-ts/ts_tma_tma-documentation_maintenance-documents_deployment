@@ -119,6 +119,11 @@ Include some identifying text into the `/etc/motd` file, for example:
 
 > [Tool used](https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t=mcc)
 
+## Add wallpaper
+
+- Copy the `EdificioTekniker_logo_negativo.png` to `/home/lsst/Pictures`
+- Open the settings and set the wallpaper to the Tekniker one
+
 ## Install useful tools
 
 - `sudo yum install git git-lfs traceroute`
@@ -317,7 +322,8 @@ There are two options for doing this:
     ```
 
 - If there is no LV installation in the server
-  - Download the `libGetClocks.so` and place it in `/usr/local/lib/`
+  - Download the `libGetClocks.so` [from here](https://github.com/lsst-ts/ts_tma_labview_pxi-controller/tree/develop/local_libraries_to_deploy_on_PXIs)
+    and place it in `/usr/local/lib/`
 
 ## Install EUI
 

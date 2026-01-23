@@ -36,6 +36,9 @@ All those elements are described in next subsections.
 
 The computer operating system is Centos 7 (centos-release-7-3.1611.el7.centos.x86_64).
 
+>‼️ This is the original setup for the MCC provide by Tekniker with the TMA. In 2026 this server is being replaced by a
+> more modern server with Alma 9, [for setting this up go here](./InstallAlma9MCC.html)
+
 ### EUI
 
 The EUI is based on LabVIEW 2020 64 bits for Linux.
