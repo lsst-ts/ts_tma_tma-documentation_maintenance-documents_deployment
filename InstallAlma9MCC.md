@@ -1,5 +1,9 @@
 # Install Alma 9 MCC
 
+## [Hardware specs](https://ts-tma.lsst.io/docs/tma_mcs-equipment-general-description/MCS_Equipment_General_Description.html#supermicro-server)
+
+## Installation guide
+
 - Download Alma 9 boot ISO and flash it into a USB drive.
 - Insert the USB Drive in the server and boot from the USB.
 - Select the GUI installation method.
