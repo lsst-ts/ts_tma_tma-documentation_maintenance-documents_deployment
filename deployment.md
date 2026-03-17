@@ -1353,9 +1353,9 @@ Steps for deploying the code to the TMA PXI:
 
 Steps for setting up the cRIO:
 
-- Open the `LSST_MainControllerPXI.lvproj`.
+- Open the `MainAxesPXI.lvproj`.
 - Connect to the PXI and change it to Configuration.
-- Navigate to the cRIO at the etherCAT line build the MainFPGA.
+- Navigate to the cRIO at the **MainDrives EtherCAT Master** build the MainFPGA.
 - Download the MainFPGA.
 
 ### Trajectory generation
