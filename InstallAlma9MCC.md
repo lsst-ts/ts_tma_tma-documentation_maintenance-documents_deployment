@@ -332,7 +332,7 @@ There are two options for doing this:
 ## Install EUI
 
 - Download the latest rpm (rpm name **tma_eui**) from [LSST nexus repo](https://repo-nexus.lsst.org/nexus/#browse/browse:ts_yum:releases).
-- Install the rpm -> `sudo dnf install ./tma_eui-6.5.0-1.el9.x86_64.rpm`
+- Install the rpm -> `sudo dnf install ./tma_eui-7.1.0-1.el9.x86_64.rpm`
 
 ## Install VNC
 
