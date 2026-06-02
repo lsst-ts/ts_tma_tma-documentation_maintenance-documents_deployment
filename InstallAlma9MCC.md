@@ -165,8 +165,8 @@ Include some identifying text into the `/etc/motd` file, for example:
 - Configure Docker to start on boot with systemd
   
   ```bash
-  $ sudo systemctl enable docker.service
-  $ sudo systemctl enable containerd.service
+  sudo systemctl enable docker.service
+  sudo systemctl enable containerd.service
   ```
 
 ## Install the MtMount Operation Manager
@@ -185,7 +185,7 @@ For sending and receiving data from/to the HHD some tcp ports must be opened. To
 - Execute this command to open the right ports:
 
 ```bash
-sudo firewall-cmd --zone=public --add-port=50006/tcp --permanent --zone=public --add-port=40005/tcp --permanent --zone=public --add-port=50005/tcp --permanent --zone=public --add-port=40006/tcp --permanent --zone=public --add-port=7500/tcp --permanent --zone=public --add-port=3306/tcp --permanent --zone=public --add-port=3015/tcp --permanent --zone=public --add-port=50013/tcp --permanent --zone=public --add-port=50015/tcp --permanent --zone=public --add-port=50035/tcp --permanent --zone=public --add-port=50016/tcp --permanent --zone=public --add-port=50017/tcp --permanent --zone=public --add-port=30005/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=50006/tcp --permanent --zone=public --add-port=40005/tcp --permanent --zone=public --add-port=50005/tcp --permanent --zone=public --add-port=40006/tcp --permanent --zone=public --add-port=7500/tcp --permanent --zone=public --add-port=3306/tcp --permanent --zone=public --add-port=3015/tcp --permanent --zone=public --add-port=50013/tcp --permanent --zone=public --add-port=50015/tcp --permanent --zone=public --add-port=50035/tcp --permanent --zone=public --add-port=50016/tcp --permanent --zone=public --add-port=50017/tcp --permanent --zone=public --add-port=30005/tcp --permanent --zone=public --add-port=319/udp --permanent --zone=public --add-port=320/udp --permanent
 ```
 
 - Reload the firewall:
@@ -226,9 +226,103 @@ icmp-blocks:
 rich rules:
 ```
 
-## Install database
+## Time sync
 
-TODO: when ready to be deployed in Chile
+- Check that `chrony` is installed -> `chronyc tracking`
+- Update the configuration to the Rubin one, for this update `/etc/chrony.conf` file as follows:
+
+```bash
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (http://www.pool.ntp.org/join.html).
+server time1.cp.lsst.org iburst
+server ntp.cp.lsst.org iburst
+server 1.cl.pool.ntp.org iburst
+server 1.south-america.pool.ntp.org iburst
+server ntp.cp.lsst.org iburst
+
+# Record the rate at which the system clock gains/losses time.
+driftfile /var/lib/chrony/drift
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
+makestep 1.0 3
+
+# Enable kernel synchronization of the real-time clock (RTC).
+rtcsync
+
+# Enable hardware timestamping on all interfaces that support it.
+#hwtimestamp *
+
+# Increase the minimum number of selectable sources required to adjust
+# the system clock.
+#minsources 2
+
+# Allow NTP client access from local network.
+allow 192.168
+
+# Serve time even if not synchronized to a time source.
+#local stratum 10
+
+# Specify file containing keys for NTP authentication.
+#keyfile /etc/chrony.keys
+
+# Specify directory for log files.
+logdir /var/log/chrony
+
+# Select which information is logged.
+#log measurements statistics tracking
+
+leapsecmode system
+maxslewrate 1000
+smoothtime 400 0.001 leaponly
+leapsectz right/UTC
+```
+
+- Restart `chronyd` -> `sudo systemctl restart chronyd`
+- Check status
+
+```bash
+$ sudo systemctl status chronyd
+● chronyd.service - NTP client/server
+     Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-06-02 09:20:22 UTC; 45s ago
+       Docs: man:chronyd(8)
+             man:chrony.conf(5)
+    Process: 255532 ExecStart=/usr/sbin/chronyd $OPTIONS (code=exited, status=0/SUCCESS)
+   Main PID: 255534 (chronyd)
+      Tasks: 1 (limit: 196649)
+     Memory: 1.0M (peak: 2.1M)
+        CPU: 25ms
+     CGroup: /system.slice/chronyd.service
+             └─255534 /usr/sbin/chronyd -F 2
+
+Jun 02 09:20:22 tma-mcc systemd[1]: Starting NTP client/server...
+Jun 02 09:20:22 tma-mcc chronyd[255534]: chronyd version 4.8 starting (+CMDMON +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +NTS +SECHASH +IPV6 +DEBUG)
+Jun 02 09:20:22 tma-mcc chronyd[255534]: Using right/UTC timezone to obtain leap second data
+Jun 02 09:20:22 tma-mcc chronyd[255534]: Frequency 52.305 +/- 0.006 ppm read from /var/lib/chrony/drift
+Jun 02 09:20:22 tma-mcc chronyd[255534]: Loaded seccomp filter (level 2)
+Jun 02 09:20:22 tma-mcc systemd[1]: Started NTP client/server.
+Jun 02 09:20:27 tma-mcc chronyd[255534]: Selected source 139.229.160.38 (time1.cp.lsst.org)
+Jun 02 09:20:27 tma-mcc chronyd[255534]: Activated time smoothing (leap seconds only)
+Jun 02 09:20:27 tma-mcc chronyd[255534]: System clock TAI offset set to 37 seconds
+
+$ chronyc tracking
+Reference ID    : 8BE5A026 (time1.cp.lsst.org)
+Stratum         : 2
+Ref time (UTC)  : Tue Jun 02 09:21:32 2026
+System time     : 0.000135883 seconds fast of NTP time
+Last offset     : +0.000143650 seconds
+RMS offset      : 0.000143650 seconds
+Frequency       : 52.305 ppm fast
+Residual freq   : +1.894 ppm
+Skew            : 0.007 ppm
+Root delay      : 0.000448531 seconds
+Root dispersion : 0.000522120 seconds
+Update interval : 64.3 seconds
+Leap status     : Normal
+```
+
+## Install database
 
 - Clone the repository to `/home/lsst/LSST`
 
@@ -238,21 +332,20 @@ cd /home/lsst/LSST
 git clone git@github.com:lsst-ts/ts_tma_mariadb-docker.git
 ```
 
-- Update repository:
+- Rename repository folder:
 
 ```bash
-cd /home/lsst/LSST/mariadb-docker
-
-git pull
+mv ts_tma_mariadb-docker/ mariadb-docker
 ```
 
-- Go to `/home/lsst/LSST/mariadb-docker`
+- Go to `/home/lsst/LSST/mariadb-docker` -> `cd /home/lsst/LSST/mariadb-docker`
 - Start the docker service:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
+- Change ownership of the *backup* folder -> `sudo chown lsst:lsst  backup/`
 - Get the last backup database available and copy it to: `./backup`
 
   Copy the three files:
@@ -276,7 +369,7 @@ sudo ./restoredatabases.pl
 - Edit contrab file to execute the python code that generates the backups:
 
 ```bash
-sudo crontab -e
+crontab -e
 ```
 
 - Add the following lines (Note: that the paths may change for each specific installation.):
@@ -288,6 +381,12 @@ sudo crontab -e
 ```
 
 - Save and exit crontab editor.
+- Create folder for github backup
+  - Go to `LSST` folder -> `cd /home/lsst/LSST`
+  - Clone Backup in github repo -> `git clone https://github.com/lsst-ts/ts_llconfig_mtcs.git`
+  - Create ssh credentials and add them to the [backup-mt-git](https://github.com/backup-mt-git) user, credentials for
+    this user are in the TMA vault.
+  - If the folder naming is kept the same as in this guide, the script will backup the changes automatically
 
 ## Install LV 2024
 
@@ -304,7 +403,7 @@ First, download your copy of VIPM for Linux at: [VIPM](https://www.vipm.io/downl
   - unzip the files -> `sudo unzip vipm-22.1.2354-linux.zip -d /usr/local/JKI/VIPM`
 - Enable VI server in the LabVIEW installation.
 - Run VIPM from the Terminal -> `sudo /usr/local/JKI/VIPM/vipm`
-- Download the latest VIPM configuration from [**here**](https://github.com/lsst-ts/ts_tma_vipm_dependency)
+- Download the latest VIPM configuration from [**this link here**](https://github.com/lsst-ts/ts_tma_vipm_dependency)
   - Note that the file is big and is uploaded using git-lfs
 - Execute VI Package Manager.
 - Verify that VI Package Manager can connect to LabVIEW. If not:
@@ -491,3 +590,10 @@ There are two options for doing this:
 
 - Build the tool from [this repo](https://github.com/lsst-ts/ts_tma_labview_settings-database-editor)
 - Copy the build to `/usr/local/TMA_SettingsDatabaseEditor`
+
+## Create shortcut for AUI in the Desktop
+
+- Enable desktop icons -> `gnome-extensions enable desktop-icons@gnome-shell-extensions.gcampax.github.com`
+- Create symbolink link to the EUI
+  - cd to the Desktop -> `cd /home/lsst/Desktop`
+  - Create symbolink link in the desktop pointing to the installed EUI -> `ln -s /usr/local/TMA/eui tma_eui`
