@@ -374,11 +374,21 @@ crontab -e
 
 - Add the following lines (Note: that the paths may change for each specific installation.):
 
-```bash
-5 12 * * * /home/lsst/LSST/mariadb-docker/createbackup.pl
+  ```bash
+  5 12 * * * /home/lsst/LSST/mariadb-docker/createbackup.pl
 
-5 13 * * * docker run --rm -v /home/lsst/LSST/mariadb-docker/python:/script -v /home/lsst/LSST/mariadb-docker/backup:/backup python:3.7 python /script/main.py
-```
+  5 13 * * * docker run --rm -v /home/lsst/LSST/mariadb-docker/python:/script -v /home/lsst/LSST/mariadb-docker/backup:/backup python:3.7 python /script/main.py
+  ```
+
+  - It is possible that some `perl`commands are missing, install them as follows:
+
+    ```bash
+    $ sudo dnf install perl-File-Copy -y
+    
+    # test that is working
+    $ perl -e "use File::Copy; print 'ok'"
+    ok
+    ```
 
 - Save and exit crontab editor.
 - Create folder for github backup
